@@ -1,6 +1,6 @@
 # PRD — Situs studio digital premium
 
-Status: spesifikasi. Implementasi belum dimulai.
+Status: fase 1 diimplementasikan di repo ini. Merek kerja tetap Northline sampai diganti di `content/brand.ts`.
 Referensi pengalaman: [fraxbit.com](https://fraxbit.com/) (diambil 26 November 2026).
 Dokumen pendamping: `docs/design.md`, `AGENTS.md`.
 

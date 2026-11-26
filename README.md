@@ -1,9 +1,22 @@
 # landingpage.
 
-Situs marketing studio digital. Belum diimplementasikan.
+Situs marketing studio digital, fase 1. Merek kerja: **Northline**, diganti lewat `content/brand.ts`.
 
-- [PRD](docs/PRD.md) — cakupan, halaman, dan kriteria fase 1
-- [Design](docs/design.md) — token, tipe, komponen, motion
-- [AGENTS.md](AGENTS.md) — cara membangunnya
+- [PRD](docs/PRD.md)
+- [Design](docs/design.md)
+- [AGENTS.md](AGENTS.md)
 
-Referensi pengalaman adalah struktur dan craft [fraxbit.com](https://fraxbit.com/). Identitas, copy, dan bukti sosial tidak disalin dari sana. Merek kerja di spesifikasi: Northline, diganti lewat `content/brand.ts` saat implementasi.
+## Menjalankan
+
+```bash
+npm install
+npm run dev
+```
+
+Buka [http://localhost:3000](http://localhost:3000).
+
+`npm run build` untuk produksi. `npm run lint` untuk pemeriksaan.
+
+Formulir mencatat permintaan di log server. Email hanya terkirim jika `RESEND_API_KEY` dan `RESEND_FROM` diisi. Alamat situs untuk metadata memakai `NEXT_PUBLIC_SITE_URL`.
+
+Sampel proyek dan review ditandai sebagai sample. Jangan menampilkan angka atau klien yang belum nyata.
