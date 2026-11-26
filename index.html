@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#191b1e" />
+    <title>FORMA — Progress &amp; Possibility</title>
+    <meta
+      name="description"
+      content="A cinematic studio piece about the forces of change. Progress, selected work, and a sculpture that fractures."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 5 L28 26 H4 Z' fill='none' stroke='%23f7f7f5' stroke-width='2'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./vendor/three/build/three.module.js",
+          "three/addons/": "./vendor/three/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="header">
+      <a class="logo" href="#top" data-nav="start">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3.5 L21 20.5 H3 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <span>forma</span>
+      </a>
+      <div class="header-side">
+        <a class="talk" href="#talk" data-talk>Let’s talk <span class="talk-rest">possibilities</span></a>
+        <button class="icon-btn" id="menu-open" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-dialog">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <div id="loader" class="loader" hidden>
+      <p id="loader-note">Loading the piece</p>
+      <div class="loader-track" aria-hidden="true"><span id="loader-bar"></span></div>
+    </div>
+
+    <main id="stage" class="stage">
+      <div class="sticky" id="content">
+        <canvas id="webgl" aria-hidden="true"></canvas>
+        <div class="vignette" aria-hidden="true"></div>
+        <p class="sr-only">
+          An interactive scroll piece. A dark metal triangular ring frames the opening, selected work
+          arrives as a curve of panels, then a limestone head fractures into solid pieces, and a geometric
+          core closes the sequence.
+        </p>
+
+        <section class="plate" id="top" data-plate="hero">
+          <div class="hero-copy">
+            <h1 class="display">
+              <span class="line rise">Progress &amp;</span>
+              <span class="line rise">Possibility</span>
+            </h1>
+            <div class="rule rise" aria-hidden="true"></div>
+            <p class="sub rise">Forces of change that every brand, business, and human face.</p>
+          </div>
+        </section>
+
+        <p class="edge edge-left" data-plate="edges">Creativity in motion</p>
+        <p class="edge edge-right" data-plate="edges">A different perspective</p>
+        <p class="hint" data-plate="hint"><span>Scroll to explore</span></p>
+
+        <section class="plate plate-work" id="work" data-plate="work">
+          <p class="kicker">Selected work</p>
+          <div class="fallback-list">
+            <article>
+              <h2>Helio</h2>
+              <p>2025 · Product, identity. A platform for reading a changing planet without the noise of a dashboard.</p>
+            </article>
+            <article>
+              <h2>Vesper</h2>
+              <p>2024 · Identity, digital. An evening hotel brand that treats arrival as a ritual.</p>
+            </article>
+            <article>
+              <h2>Kindred</h2>
+              <p>2025 · Brand, product. A membership that makes medicine feel like a conversation.</p>
+            </article>
+            <article>
+              <h2>Northwind</h2>
+              <p>2024 · Commerce, campaign. Gear for long routes, sold with fewer and better decisions.</p>
+            </article>
+            <article>
+              <h2>Sable</h2>
+              <p>2025 · Brand, web. A house for patient capital, written in plain language.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="plate plate-quote" id="sculpture" data-plate="belief">
+          <h2 class="display display-mid">
+            We believe creativity<br />
+            &amp; curiosity are broken<br />
+            in business.
+          </h2>
+        </section>
+
+        <section class="plate plate-quote" data-plate="fracture">
+          <h2 class="display display-small">
+            Fracturing our ability to experiment with<br />
+            new ideas, tactics, and experiences that<br />
+            lead to growth.
+          </h2>
+        </section>
+
+        <section class="plate plate-close" id="close" data-plate="close">
+          <div class="hero-copy">
+            <h2 class="display">
+              <span class="line">Break the mold.</span>
+              <span class="line">Make progress.</span>
+            </h2>
+            <p class="sub">Great things begin with a different perspective.</p>
+            <div class="close-actions">
+              <button class="text-btn" id="again" type="button">Experience it again</button>
+              <a class="text-btn" id="talk" href="#talk" data-talk>Let’s talk possibilities</a>
+            </div>
+            <p class="credit">Limestone head of a bearded man, The Metropolitan Museum of Art. CC0.</p>
+          </div>
+        </section>
+
+        <div id="hotspots" class="hotspots"></div>
+        <p id="piece-label" class="piece-label" hidden></p>
+        <p id="fallback-note" class="fallback-note" hidden>
+          The 3D scene could not start on this device. The writing of the piece is still here.
+        </p>
+      </div>
+    </main>
+
+    <dialog id="nav-dialog" aria-label="Menu">
+      <div class="nav-bar">
+        <span class="logo logo-static"><span>forma</span></span>
+        <button class="icon-btn is-x" type="button" data-close aria-label="Close menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="nav-links">
+        <a href="#top" data-nav="start">Introduction</a>
+        <a href="#work" data-nav="work">Selected work</a>
+        <a href="#sculpture" data-nav="sculpture">Sculpture</a>
+        <a href="#close" data-nav="close">Close</a>
+      </nav>
+    </dialog>
+
+    <dialog id="talk-dialog" aria-labelledby="talk-title">
+      <button class="icon-btn is-x dialog-x" type="button" data-close aria-label="Close dialog">
+        <span></span>
+        <span></span>
+      </button>
+      <div class="talk-layout">
+        <p class="kicker">Studio</p>
+        <h2 id="talk-title">Let’s talk possibilities.</h2>
+        <p class="lede">Tell us what is changing. We will write back.</p>
+        <form>
+          <label>Name<input name="name" type="text" autocomplete="name" required /></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+          <label>Note<textarea name="note" rows="4" required></textarea></label>
+          <button class="text-btn" type="submit">Send a note</button>
+        </form>
+      </div>
+    </dialog>
+
+    <dialog id="project-dialog" aria-labelledby="project-title">
+      <button class="icon-btn is-x dialog-x" type="button" data-close aria-label="Close project">
+        <span></span>
+        <span></span>
+      </button>
+      <div class="project-layout">
+        <figure>
+          <img alt="" />
+        </figure>
+        <div class="project-copy">
+          <p class="kicker" data-field="kicker"></p>
+          <h2 id="project-title" data-field="title"></h2>
+          <p class="meta" data-field="meta"></p>
+          <p class="lede" data-field="summary"></p>
+          <p data-field="body"></p>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="scrim" hidden></div>
+    <div id="cursor" aria-hidden="true"><span></span></div>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
