@@ -6,6 +6,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { serviceFaqs } from "@/content/brand";
 import { serviceGroups } from "@/content/navigation";
 import { services } from "@/content/services";
+import { revealDelay } from "@/lib/reveal";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -27,7 +28,7 @@ export default function ServicesPage() {
           </h2>
           <div className="grid gap-16">
             {serviceGroups.map((group, groupIndex) => (
-              <div key={group} className="grid gap-6 border-t border-line pt-8 lg:grid-cols-12">
+              <div key={group} className="grid gap-6 border-t border-line pt-8 lg:grid-cols-12" data-reveal style={revealDelay(groupIndex * 0.08)}>
                 <p className="font-mono text-sm tracking-[0.14em] text-muted lg:col-span-3">
                   {String(groupIndex + 1).padStart(2, "0")} / {group}
                 </p>

@@ -5,6 +5,7 @@ import { Button } from "@/components/site/button";
 import { CtaBand } from "@/components/site/cta-band";
 import { WorkCover } from "@/components/site/work-cover";
 import { getProject, projects } from "@/content/projects";
+import { revealDelay } from "@/lib/reveal";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -32,12 +33,12 @@ export default async function ProjectPage({ params }: PageProps<"/portfolio/[slu
       <article>
         <header data-header-theme="dark" className="bg-ink text-white">
           <div className="container-x pt-[calc(var(--header-h)+4rem)] pb-12">
-            <p className="font-mono text-xs tracking-[0.18em] text-white/50 uppercase">{project.industry}</p>
-            <h1 className="page-title mt-4 max-w-4xl">
+            <p className="font-mono text-xs tracking-[0.18em] text-white/50 uppercase" data-reveal>{project.industry}</p>
+            <h1 className="page-title mt-4 max-w-4xl" data-reveal style={revealDelay(0.08)}>
               {project.title}
               <span className="text-accent">.</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">{project.summary}</p>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70" data-reveal style={revealDelay(0.16)}>{project.summary}</p>
             <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4 text-sm">
               <div>
                 <dt className="font-mono text-[0.68rem] tracking-[0.14em] text-white/40 uppercase">Year</dt>
@@ -52,7 +53,7 @@ export default async function ProjectPage({ params }: PageProps<"/portfolio/[slu
         </header>
         <div data-header-theme="light" className="bg-white">
           <div className="container-x py-10">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[1.25rem]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[1.25rem]" data-reveal="clip">
               <WorkCover id={project.cover} />
               {project.sample ? <span className="sample-chip">Sample</span> : null}
             </div>
@@ -64,8 +65,8 @@ export default async function ProjectPage({ params }: PageProps<"/portfolio/[slu
                 ["Problem", project.problem],
                 ["Work", project.work],
                 ["Outcome", project.outcome],
-              ].map(([label, body]) => (
-                <section key={label}>
+              ].map(([label, body], index) => (
+                <section key={label} data-reveal style={revealDelay(index * 0.1)}>
                   <h2 className="font-mono text-xs tracking-[0.16em] text-muted uppercase">{label}</h2>
                   <p className="mt-3 text-lg leading-relaxed">{body}</p>
                 </section>

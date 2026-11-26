@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { HeaderFallback } from "@/components/site/header-fallback";
+import { ScrollMotion } from "@/components/site/scroll-motion";
 import { JsonLd } from "@/components/site/json-ld";
 import { brand } from "@/content/brand";
 import "./globals.css";
@@ -78,6 +79,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <Suspense fallback={<HeaderFallback />}>
           <Header />
+        </Suspense>
+        <Suspense fallback={null}>
+          <ScrollMotion />
         </Suspense>
         <main id="main">{children}</main>
         <Footer />

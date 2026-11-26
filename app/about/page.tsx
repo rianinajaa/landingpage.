@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CtaBand } from "@/components/site/cta-band";
 import { PageHero } from "@/components/site/page-hero";
 import { brand, principles } from "@/content/brand";
+import { revealDelay } from "@/lib/reveal";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,12 +19,12 @@ export default function AboutPage() {
       />
       <section data-header-theme="light" className="section-y bg-white" aria-labelledby="principles-title">
         <div className="container-x">
-          <h2 id="principles-title" className="section-title max-w-4xl">
+          <h2 id="principles-title" className="section-title max-w-4xl" data-reveal>
             Four principles. Every project<span className="text-accent">.</span>
           </h2>
           <ol className="mt-16 grid gap-12 sm:grid-cols-2">
             {principles.map((item, index) => (
-              <li key={item.title} className="border-t border-line pt-6">
+              <li key={item.title} className="border-t border-line pt-6" data-reveal style={revealDelay((index % 2) * 0.12)}>
                 <p className="font-mono text-sm tracking-[0.14em] text-muted">{String(index + 1).padStart(2, "0")}</p>
                 <h3 className="mt-3 text-3xl tracking-[-0.04em]">{item.title}</h3>
                 <p className="mt-3 max-w-md text-base leading-relaxed text-gray-600">{item.body}</p>

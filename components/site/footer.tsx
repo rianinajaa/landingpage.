@@ -11,7 +11,7 @@ export function Footer() {
       <h2 id="footer-title" className="sr-only">
         {brand.name}
       </h2>
-      <div className="container-x section-y">
+      <div className="container-x section-y" data-reveal>
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="wordmark text-3xl">{brand.name}</p>

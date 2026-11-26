@@ -6,6 +6,7 @@ import { FaqList } from "@/components/site/faq-list";
 import { PageHero } from "@/components/site/page-hero";
 import { brand, contactFaqs, contactSteps } from "@/content/brand";
 import { isInterest } from "@/lib/enquiry";
+import { revealDelay } from "@/lib/reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -22,7 +23,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
       />
       <section data-header-theme="light" className="section-y bg-white" aria-labelledby="contact-steps-title">
         <div className="container-x grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5" data-reveal>
             <h2 id="contact-steps-title" className="text-4xl tracking-[-0.04em]">
               Start with a few details<span className="text-accent">.</span>
             </h2>
@@ -31,7 +32,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
             </p>
             <ol className="mt-10 grid gap-6">
               {contactSteps.map((step, index) => (
-                <li key={step.title}>
+                <li key={step.title} data-reveal style={revealDelay(0.08 + index * 0.08)}>
                   <p className="font-mono text-xs tracking-[0.14em] text-muted">{String(index + 1).padStart(2, "0")}</p>
                   <h3 className="mt-1 text-2xl tracking-[-0.03em]">{step.title}</h3>
                   <p className="mt-2 text-gray-600">{step.body}</p>
@@ -39,7 +40,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
               ))}
             </ol>
           </div>
-          <div id="enquiry" className="lg:col-span-7">
+          <div id="enquiry" className="lg:col-span-7" data-reveal style={revealDelay(0.12)}>
             <Suspense fallback={<div className="min-h-80 rounded-3xl bg-mist" />}>
               <ContactForm searchParams={searchParams} />
             </Suspense>

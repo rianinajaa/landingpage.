@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/site/json-ld";
 import { PageHero } from "@/components/site/page-hero";
 import { brand } from "@/content/brand";
 import { getService, services } from "@/content/services";
+import { revealDelay } from "@/lib/reveal";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -42,7 +43,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <section data-header-theme="light" className="border-b border-line bg-white" aria-label="Project facts">
         <dl className="container-x grid gap-6 py-8 sm:grid-cols-3">
           {service.facts.map((fact) => (
-            <div key={fact.label}>
+            <div key={fact.label} data-reveal style={revealDelay(0.05)}>
               <dt className="font-mono text-[0.68rem] tracking-[0.14em] text-muted uppercase">{fact.label}</dt>
               <dd className="mt-1 text-2xl tracking-[-0.03em]">{fact.value}</dd>
             </div>
@@ -51,12 +52,12 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       </section>
       <section data-header-theme="light" className="section-y bg-white" aria-labelledby="includes-title">
         <div className="container-x">
-          <h2 id="includes-title" className="section-title max-w-4xl">
+          <h2 id="includes-title" className="section-title max-w-4xl" data-reveal>
             What you leave with<span className="text-accent">.</span>
           </h2>
           <ol className="mt-14 grid gap-8 sm:grid-cols-2">
             {service.includes.map((item, index) => (
-              <li key={item.title} className="border-t border-line pt-5">
+              <li key={item.title} className="border-t border-line pt-5" data-reveal style={revealDelay((index % 2) * 0.1)}>
                 <p className="font-mono text-xs tracking-[0.14em] text-muted">{String(index + 1).padStart(2, "0")}</p>
                 <h3 className="mt-2 text-2xl tracking-[-0.03em]">{item.title}</h3>
                 <p className="mt-2 text-base leading-relaxed text-gray-600">{item.body}</p>

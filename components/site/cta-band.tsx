@@ -1,4 +1,5 @@
 import { brand } from "@/content/brand";
+import { revealDelay } from "@/lib/reveal";
 import { Button } from "./button";
 import { CopyEmail } from "./copy-email";
 import { EnquiryForm } from "./enquiry-form";
@@ -9,7 +10,7 @@ export function CtaBand({ withForm = false, interest }: { withForm?: boolean; in
   return (
     <section id="get-started" data-header-theme="accent" className="section-y bg-accent text-white" aria-labelledby="cta-title">
       <div className="container-x grid items-start gap-12 lg:grid-cols-12">
-        <div className={withForm ? "lg:col-span-5" : "lg:col-span-8"}>
+        <div className={withForm ? "lg:col-span-5" : "lg:col-span-8"} data-reveal>
           <h2 id="cta-title" className="wall-title">
             Let&apos;s build the next project
             <span className="text-ink">.</span>
@@ -33,7 +34,7 @@ export function CtaBand({ withForm = false, interest }: { withForm?: boolean; in
           </p>
         </div>
         {withForm ? (
-          <div id="enquiry" className="lg:col-span-7">
+          <div id="enquiry" className="lg:col-span-7" data-reveal style={revealDelay(0.14)}>
             <EnquiryForm interest={interest} />
           </div>
         ) : null}
